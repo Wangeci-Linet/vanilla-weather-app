@@ -19,7 +19,7 @@ header {
   padding-bottom: 2rem;
 }
 
-.input {
+.city-input {
   background-color: #f8f7ff;
   border: 1px solid #414141;
   border-radius: 8px;
@@ -37,6 +37,7 @@ header {
   color: white;
   font-size: 16px;
   line-height: 1;
+  transition: all 200ms ease-in-out;
 }
 
 .search-button:hover {
@@ -81,43 +82,6 @@ main {
   top: -38px;
 }
 
-.forecast-list {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-}
-
-.forecast-list ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 30px;
-  padding-top: 8px;
-}
-
-.forecast-list li {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  min-width: 60px;
-  align-items: center;
-}
-
-.day-name {
-  text-align: center;
-  margin: 0 10px;
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-
-.day-forecast {
-  font-size: 16px;
-  order: 3;
-  white-space: nowrap;
-}
-
 footer {
   text-align: center;
   padding: 20px;
@@ -129,7 +93,4 @@ a {
 }
 a:hover {
   color: blue;
-}
-a:link {
-  color: plum;
 }
