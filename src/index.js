@@ -51,3 +51,20 @@ let form = document.querySelector(".search-form");
 form.addEventListener("submit", citySubmit);
 
 searchCity("Nairobi");
+
+function displayForecast(response) {
+  let forecast = document.querySelector("#forecast");
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecast.innerHTML += `<div class="forecast-day">
+            <h3 class="forecast-day-name">${day}</h3>
+            <div class="forecast-icon">☀️</div>
+            <div class="forecast-temperatures">
+              <span class="forecast-temp-max">25°C</span> /
+              <span class="forecast-temp-min">15°C</span>
+            </div>
+          </div>`;
+  });
+}
+
+displayForecast();

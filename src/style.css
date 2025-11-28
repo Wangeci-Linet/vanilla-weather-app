@@ -82,6 +82,37 @@ main {
   top: -38px;
 }
 
+.forecast {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.forecast-day {
+  text-align: center;
+}
+
+.forecast-day-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.forecast-day-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.forecast-day-temperature {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+.forecast-temp-min {
+  opacity: 0.6;
+}
+
 footer {
   text-align: center;
   padding: 20px;
