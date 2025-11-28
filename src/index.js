@@ -48,11 +48,6 @@ function citySubmit(event) {
   getForecast(cityInputElement.value);
 }
 
-let form = document.querySelector(".search-form");
-form.addEventListener("submit", citySubmit);
-
-searchCity("Nairobi");
-
 function getForecast(city) {
   let apiKey = "1bf42foc33aa256d79167at7004c6dac";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
@@ -90,4 +85,8 @@ function displayForecast(response) {
   });
 }
 
+let form = document.querySelector(".search-form");
+form.addEventListener("submit", citySubmit);
+
+searchCity("Nairobi");
 getForecast("Nairobi");
