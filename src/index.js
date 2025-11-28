@@ -45,6 +45,7 @@ function citySubmit(event) {
   let cityElement = document.querySelector(".current-city");
   cityElement.innerHTML = cityInputElement.value;
   searchCity(cityInputElement.value);
+  getForecast(cityInputElement.value);
 }
 
 let form = document.querySelector(".search-form");
@@ -52,19 +53,41 @@ form.addEventListener("submit", citySubmit);
 
 searchCity("Nairobi");
 
+function getForecast(city) {
+  let apiKey = "1bf42foc33aa256d79167at7004c6dac";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
+
 function displayForecast(response) {
   let forecast = document.querySelector("#forecast");
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    forecast.innerHTML += `<div class="forecast-day">
-            <h3 class="forecast-day-name">${day}</h3>
-            <div class="forecast-icon">☀️</div>
+  forecast.innerHTML = "";
+
+  response.data.daily.forEach(function (day, index) {
+    if (index < 6) {
+      forecast.innerHTML += `<div class="forecast-day">
+            <h3 class="forecast-day-name">${formatDay(day.time)}</h3>
+            <img src="${
+              day.condition.icon_url
+            }" alt="Weather icon" width="42" class="forecast-icon" />
             <div class="forecast-temperatures">
-              <span class="forecast-temp-max">25°C</span> /
-              <span class="forecast-temp-min">15°C</span>
+              <span class="forecast-temp-max">${Math.round(
+                day.temperature.maximum
+              )}°C</span> /
+              <span class="forecast-temp-min">${Math.round(
+                day.temperature.minimum
+              )}°C</span>
             </div>
           </div>`;
+    }
   });
 }
 
-displayForecast();
+getForecast("Nairobi");
